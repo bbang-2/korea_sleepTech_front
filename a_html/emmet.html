@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=, initial-scale=1.0">
+  <title>emmet.html</title>
+</head>
+<body>
+  <!-- 단순 태그: 태그명 + tab | enter -->
+  <div></div>
+  <a href=""></a>
+  <h1></h1>
+
+  <!-- 태그의 클래스, ID 속성을 추가 -->
+  <!-- 태그명.클래스명 / 태그명#id명 -->
+  <div class="container"></div>
+  <div class="unique"></div>
+
+  <!-- 
+  태그명 생략 후 클래스, ID 속성 지정 시 div 태그로 인식 
+    >> . 기호만 지정 시 div 태그에 class 속성이 비워진 형태로 인식
+  -->
+  <div class="class-div"></div>
+  <div id="id-div"></div>
+  <div class=""></div>
+
+  <!-- ! 중첩과 형제 관계 -->
+  <!-- 자식요소: 태그 안에 포함된 태그 (부모태그 > 식태그) -->
+  <!-- ul#unordered>li.item -->
+  <ul id="unordered">
+    <li class="item"></li>
+  </ul>
+
+  <!-- 형제 요소: 같은 선상의 요소 (형제요소 + 형제요소) -->
+  <!-- hi#heading+p#paragraph -->
+  <hi id="heading"></hi>
+  <p id="paragraph"></p>
+
+  <!-- 반복요소 (태그*반복숫자값) -->
+  <!-- ol>li*5 -->
+  <ol>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ol>
+
+  <div class="division"></div>
+  <div class="division"></div>
+  <div class="division"></div>
+
+  <!-- 그룹핑: 여러 emmet 기능을 동시 적용 -->
+  header 태그 내에 nav 태그 작성하고 header의 형제 요소로 footer 태그 작성
+
+  <!-- header>nav+footer -->
+  <header>
+    <nav></nav>
+    <footer></footer>
+  </header>
+
+  <!-- (header>nav)+footer -->
+  <header>
+    <nav></nav>
+  </header>
+  <footer></footer>
+</body>
+</html>
