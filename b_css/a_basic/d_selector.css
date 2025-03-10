@@ -1,0 +1,104 @@
+/* 전체 선택자: * 기호 */
+
+* {
+  color: lightcoral;
+  margin: 0;
+  padding: 0;
+}
+
+/* 타입 선택자: 태그명 */
+h2 {
+  color: blue;
+}
+
+/* 범위가 좁을수록 스타일 우선순위가 높음 */
+
+p {
+  color: green;
+}
+
+ul {
+  background-color: lightblue;
+}
+
+/* 클래스 & 아이디 선택자 */
+.btn {
+  background-color: black;
+  color: white;
+  border: none;
+}
+
+/* 소스 코드 순서 적용 */
+.primary {
+  background-color: green;
+  color: yellow;
+}
+
+/* 아이디 > 클래스 선택자 */
+#basic {
+  font-size: 20px;
+  background-color: lightgray;
+}
+
+/* 
+  그룹 선택자
+  : 태그, 클래스, 아이디 선택자를 나열하여 스타일 중복 적용
+*/
+
+.secondary, li {
+  font-weight: 900;
+  text-decoration: underline;
+}
+
+/*
+  ! 자손(하위) 선택자
+    : 공백을 사용하여 적용
+
+    A B { ... }
+    >> A 내의 모든 B에 적용
+*/
+
+div p {
+  font-weight: 400;
+  color: black;
+  background-color: yellow;
+}
+
+/* 
+  ! 자식 선택자
+    : > 기호를 사용하여 적용
+
+    A > B { ... }
+    >> A의 직접적인 자식 B에만 적용
+*/
+
+div > p {
+  color: red;
+}
+
+/* 
+  ! 인접 형제 선택자
+    : 같은 부모를 가진 형제 중
+      - 첫 번째 동생 요소에만 적용
+      : + 가호
+
+    A + B { ... }
+*/
+
+#selector + span {
+  text-decoration: line-through;
+  color: black;
+}
+
+/* 
+  ! 형제 선택자 
+    : 형제 요소에는 모두 적용
+    : ~ 기호
+
+    Cf) 형제 선택자는 기준 선택자 (A) 이후의 요소에만 적용!
+
+  A ~ B { ... }
+*/
+#all ~ span {
+  text-decoration: underline;
+}
