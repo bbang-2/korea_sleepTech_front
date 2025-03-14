@@ -37,8 +37,8 @@ var varVar;
 letVar = 10;
 varVar = 'Hello World';
 
-letVar2 = 30; // 호이스팅 효과로 선언 전에 값 할당 가능
-console.log(letVar2);
+// letVar2 = 30; // 호이스팅 효과로 선언 전에 값 할당 가능
+// console.log(letVar2);
 
 let letVar2 = 20;
 var varVar2 = 'Hello Javascript';
@@ -49,6 +49,37 @@ var varVar2 = 'Hello Javascript';
 // cf) 호이스팅
 //    : 인터프리터(코드를 읽는 기기)가 코드를 실행하기 전 변수, 함수, 클래스 등의 선언문을 해당 범위의 맨 위로 올리는 것
 
+// +) let의 호이스팅
+
+// cf) TDZ(temporal dead zone): 변수가 선언되고 초기화되기까지의 공간
+//    >> let, const로 선언된 변수는 tdz에 있을 경우 사용 불가
+//    +) var는 tdz의 변수값 사용이 가능!
+
 // 2. 차이점 
 // - let: 동일한 영역 내에서 재선언 불가
 // - var: 동일한 영역 내에서 재선언 가능
+
+// let letVar2; - Error
+var varVar2; // 재선언 가능
+
+//! 변수 선언 예시(나이 계산 프로그램)
+let currentYear = 2025;
+let birthYear = 1997;
+let age;
+
+age = currentYear - birthYear;
+
+// 변수와 문자열 동시 출력: + 연산자 사용(연결)
+console.log(birthYear + '년도에 태어난 사람의 나이는' + age + '세입니다.');
+
+//! 상수 (constant)
+// : 변하지 않는 수, 한번 할당된 값 변경 x (재할당 불가)
+// - 선언과 동시에 반드시 초기화
+
+//? 상수 명명규칙 (필수 - 변수와 동일)
+//* 선택 명명규칙
+// : UPPER_SNAKE_CASE
+
+const PI = 3.14;
+
+// PI = 2.14; - Error
