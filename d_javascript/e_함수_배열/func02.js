@@ -39,7 +39,7 @@ introtuce(50, '이승아');
 
 //! 3. 반환값(return, 리턴값)
 // : 결과를 반환
-// - 함ㅂ수 내에서 return 키워드가 읽히면 함수의 실행을 즉시 중단, return 뒤의 값을 반환
+// - 함수 내에서 return 키워드가 읽히면 함수의 실행을 즉시 중단, return 뒤의 값을 반환
 
 function subtract(a, b) {
   let result = a - b;

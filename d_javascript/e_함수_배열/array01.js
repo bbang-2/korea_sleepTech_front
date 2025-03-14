@@ -31,7 +31,7 @@ console.log(sports[1]); // 배열명[인덱스 번호] - 야구
 sports[2] = 'basketball'
 console.log(sports); // [ '축구', '야구', 'basketball' ]
 
-const basketball = '농구'
+const basketball = '농구';
 // basketball = 'baseketball'; - 상수 재할당 불가
 
 // cf) 참조 자료형: 함수, 배열, 객체 등
@@ -66,10 +66,70 @@ let hashPotato = snacks.includes('포테토칩');
 console.log(hashPotato); // true
 
 //? 배열 조작 함수
-fruit = ['Apple', 'Banana'];
+fruits = ['Apple', 'Banana'];
 
 // 1) 추가: push(): 맨 마지막에 요소 추가
 // 2) 삭제: pop(): 맨 마지막 요소 제거 + 해당 값 반환
 //          shift(): 제일 첫번째 요소 제거 + 반환
 //          unshift(): 제일 첫번째에 하나 이상의 요소를 추가 (+ 수정된 배열 길이를 반환)
 // +) splice(): 추가 & 삭제
+
+let newLength = fruits.push('Cherry');
+console.log(newLength); // 3
+
+let lastFruit = fruits.pop();
+console.log(lastFruit); // Cherry
+
+let fitstFruit = fruits.shift();
+console.log(fitstFruit); // Apple
+
+newLength = fruits.unshift('mango', 'orange'); // 시작 부분에 하나 이상의 요소를 추가(,로 나열)
+console.log(newLength); // unshift: 수정된 배열의 길이를 반환 // 3
+
+// splice()
+// 1) 추가: splice(시작 인덱스, 0, 아이템 나열)
+// cf) splice(시작 인덱스, 삭제할 요소의 개수, ...전체 아이템)
+
+console.log(fruits); // [ 'mango', 'orange', 'Banana' ]
+fruits.splice(1, 0, 'strawberry', 'coconut');
+console.log(fruits);// [ 'mango', 'strawberry', 'coconut', 'orange', 'Banana' ]
+
+// 2) 삭제: splice(시작인덱스, 삭제할 요소의 개수)
+let removeFruits = fruits.splice(1,2);
+console.log(removeFruits); // [ 'strawberry', 'coconut' ]
+
+//? 요소 정렬
+// sort(): 오름차순 정렬
+// reverse(): 내림차순 정렬
+console.log(fruits.sort()); // [ 'Banana', 'mango', 'orange' ]
+console.log(fruits.reverse()); // [ 'orange', 'mango', 'Banana' ]
+
+//? === 배열 변환 ===
+let fruitValues = ['사과', '바나나', '망고'];
+
+// 1) join('구분자'): 배열의 모든 요소를 연결하여 하나의 문자열로 변환
+// >> 구분자 전달하지 않을 경우 ,가 기본값
+console.log(fruitValues.join()); // 사과,바나나,망고
+console.log(fruitValues.join(' ')); // 사과 바나나 망고
+console.log(fruitValues.join('-')); // 사과-바나나-망고
+console.log(fruitValues.join(', ')); // 사과, 바나나, 망고
+
+// 2) split(): 문자열을 특정 구분자를 기준으로 분라하여 하나의 배열로 변환
+let str1 = '사과,바나나,망고';
+let str2 = '사과 바나나 망고';
+let str3 = '사과-바나나-망고';
+
+console.log(str1.split(','));
+console.log(str2.split(' '));
+console.log(str3.split('-')); // [ '사과', '바나나', '망고' ]
+
+//! 다차원 배열
+let matrix = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9]
+];
+
+console.log(matrix[0]); // [ 1, 2, 3 ]
+console.log(matrix[0][0]); // 1
+

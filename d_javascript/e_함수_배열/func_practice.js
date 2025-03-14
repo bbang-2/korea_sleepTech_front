@@ -27,6 +27,9 @@ function calculatePay(hours, rate) {
     return hours * rate;}
 }
 
+let cusA = calculatePay(172, 20);
+console.log(cusA);
+
 console.log(calculatePay(172, 20));
 console.log(calculatePay(160, 22));
 console.log(calculatePay(180, 18));
