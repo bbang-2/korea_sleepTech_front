@@ -25,7 +25,7 @@ let exampleBook = {
   id: 1,
   title: '책 제목',
   author: '책 저자',
-  isAvailable: true // 기ㅗㄴ 값
+  isAvailable: true // 기본 값
 }
 
 //! === 프로젝트 구현 ===
@@ -121,6 +121,9 @@ class Library {
       return; // 메서드 종료
     }
 
+    const isNewTitleValid = newTitle && newTitle.trim().length > 0;
+    const isNewAuthorValid = newAuthor && newAuthor.trim().length > 0;
+
     if (!newTitle && !newAuthor) { // 두 가지의 값이 모두 제공되지 않을 경우
       console.log('제목 또는 저자 중 하나는 반드시 수정되어야 합니다.');
       console.log('현재는 수정된 값이 없습니다.');
@@ -148,9 +151,50 @@ class Library {
       console.log('해당 책을 찾을 수 없습니디.');
     }
   }
+  //# == 추가 기능 구현 == //
+
+  // [필터링] 저자별 도서 필터랑
+  filterBooksByAuthor(author) {
+    // 일치하는 저자를 필터링
+    const filtered = this.books.filter(book => book.author.toLowerCase() === author.toLowerCase());
+    console.log(`=== ${author}의 책 목록 ===`);
+    filtered.forEach (book => {
+      console.log(`${book.id}: ${book.title} - ${book.isAvailable ? '대여가능' : '대여 중'}`);
+    });
+    return filtered;
+  }
+  
+  // [필터링] 제목 키워드로 도서 필터링
+  filterBooksByTitle(keyword) {
+    const book = this.books.filter(book => book.title.toLowerCase().includes(keyword.toLowerCase()));
+    console.log(`===제목에 ${keyword}가 포함된 책 목록`);
+    filtered.forEach(book => {
+      console.log(`${book.id}: ${book.title} - ${book.isAvailable ? '대여가능' : '대여 중'}`);
+    });
+    return filtered;
+  }
+  
+  // [필터링] 대여 가능 여부로 도서 필터링 
+  filterBooksByAvailable(isAvailable) {
+    const status = isAvailable ? '대여 가능' : '대여 중';
+    const filtered = this.books.filter(book => book.isAvailable === isAvailable);
+    console.log(`=== ${status}인 책 목록 ===`);
+    filtered.forEach(book => {
+      console.log(`${book.id}: ${book.title} by ${book.author}`);
+    });
+    return filtered;
+  }
+  
+  // [추가기능] 대여 가능 도서 수 집계
+  countAvailableBooks() {
+    // const count = this.book.filter(book => book.isAvailable === true)
+    const count = this.books.filter(book => book.isAvailable).length;
+    console.log(`총 ${count}권의 책이 대여 가능합니다.`);
+    return count;
+  }
 }
 
-//# == 추가 기능 구현 == //
+
 
 
 //! == 프로젝트 실행 ===
@@ -174,3 +218,30 @@ busanLibrary.displayBooks();
 busanLibrary.updateBook(2, '자바 공부는 어려워', null);
 busanLibrary.removeBook(3);
 busanLibrary.displayBooks();
+
+// === 양산 도서관 ===
+const yangsanLibrary = new Library();
+yangsanLibrary.addBook('정보처리기사 정복하기', '이승아'); 
+yangsanLibrary.addBook('정보산기 정복하기', '이도경'); 
+yangsanLibrary.addBook('빅데이터분석기사 정복하기', '이승아');
+
+yangsanLibrary.displayBooks();
+
+busanLibrary.filterBooksByAuthor('이승아');
+// === 이승아의 책 목록 ===
+// 1: SQLD 공부는 재밌어 - 대여 가능
+// 5: 스프링 공부는 재밌어 - 대여 가능
+
+busanLibrary.rentBook(1);
+busanLibrary.rentBook(4);
+busanLibrary.filterBooksByAvailable(true);
+// === 대여 가능인 책 목록 ===
+// 2: 자바 공부는 어려워 by 이도갱이
+// 5: 스프링 공부는 재밌어 by 이승아
+
+busanLibrary.filterBooksByAvailable(false);
+// === 대여 중인 책 목록 ===
+// 1: SQLD 공부는 재밌어 by 이승아
+// 4: 리액트 공부는 재밌어 by 이지훈
+
+busanLibrary.countAvailableBooks(); // 총 2권의 책이 대여 가능합니다.
