@@ -45,18 +45,62 @@ document.addEventListener('DOMContentLoaded', () => {
 // : 특정 속성값을 추출
 
 document.addEventListener('DOMContentLoaded', () => {
-  const dogs = document.querySelectorAll('.dogs');
+  const dogs = document.querySelectorAll('.서준');
 
   dogs.forEach((dog, index) => {
     const width = (index + 1) * 100; // 100, 200, 300, 400
 
-    dog.setAttribute('width', width);
-    dog.setAttribute('height', '250px');
+    // dog.setAttribute('width', width);
+    // dog.setAttribute('height', '250px');
+    dog.style.width = width + 'px';
+    dog.style.height = '250px';
 
-    const source = '../서준.jpg';
+    const source = './서준.jpg';
     const alter = '서준이 이미지';
 
+    //? cf) HTML 표춘에 정의된 속성들은 setAttribute() 또는
+          //? getAttribute() 사용없이 객체 접근 가능
+    // : 내장된 속성들은 .(점)연산자를 사용하여 속성 읽기 또는 설정 가능
     dog.src = source;
     dog.alt = alter;
-  })  
-})
+  });
+});
+
+//! 3) 스타일 조작하기
+// : 문서 객체의 스타일 조작 시 style 속성을 사용
+
+//? cf) style 속성은 JS에서 객체로 인식
+// : 문서객체.style.스타일속성명;
+// >> 식별자에 -(하이픈) 사용x
+// >> loverCamelCase 사용 권장
+
+// ex) text-align: textAlign
+//      font-size: fontSize
+
+/*
+  선택자 {
+    backgroung-color: 250px;
+    font-size: 100px;
+  }
+
+  CSS: 하이픈(-)으로 이어지는 단어를 연결
+*/
+
+document.addEventListener('DOMContentLoaded', () => {
+  // id값이 container인 요소 내부의 div 태그만 가져옴
+  const divs = document.querySelectorAll('#container div');
+
+  divs.forEach ((div, index) => {
+    const gradation = index * 10; // 0 ~ 240
+  
+    div.style.height = '10px';
+    div.style['backgroundColor'] = `rgb(${gradation}, ${gradation}, ${gradation})`;
+
+    // stlye 객체 사용 시
+    // : 주로 .연산자 사용을 권장
+    
+    // h1.style.스타일속성명
+    // h1.style.['스타일속성명']
+    // h1.style.['스타일-속성명']
+  });
+});
