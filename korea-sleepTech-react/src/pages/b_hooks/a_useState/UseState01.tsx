@@ -68,8 +68,8 @@ function UseState01() {
   }
   const handleDownClick = () => {
     // setCount(count - 1);
-    setCount (prevCount => prevCount + 1); // 0 + 1
-    setCount (prevCount => prevCount + 1); // 1 + 1
+    setCount (prevCount => prevCount - 1); // 0 + 1
+    setCount (prevCount => prevCount - 1); // 1 + 1
   }
 
 
