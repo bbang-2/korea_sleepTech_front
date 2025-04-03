@@ -5,10 +5,27 @@ import About from './About'
 import Contact from './Contact'
 import User from './User'
 import Posts from './Posts'
+import { Link } from 'react-router-dom'
 
 function Index() {
   return (
     <div>
+      <h2>React Router 실습</h2>
+      <nav style={{
+        border: '1px solid #ddd',
+        display: 'flex',
+        justifyContent: 'space-around',
+        padding: '10px',
+        margin: '10px',
+        borderRadius: '4px',
+        color: '#ddd'
+      }}>
+        <Link to='/router-practice'>홈</Link> | {" "}
+        <Link to='/router-practice/about'>소개</Link> | {" "}
+        <Link to='/router-practice/contact'>문의하기</Link> | {" "}
+        <Link to='/router-practice/user/1'>1번 유저</Link> | {" "}
+        <Link to='/router-practice/posts?userId=1'>1번 유저 게시글</Link> | {" "}
+      </nav>
 
 
       

@@ -9,7 +9,7 @@ function About() {
     <div>
       <h2>About 소개 페이지</h2>
       <p>현재 경로: {location.pathname}</p>
-      {/* 현재 경로: /router-practioc/about */}
+      {/* 현재 경로: /router-practice/about */}
     </div>
   )
 }
