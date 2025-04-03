@@ -25,18 +25,35 @@ const myFunc = () => {
 // >> 배열 안의 값이 바뀔 때만 함수가 다시 생성!
 //    : 그렇지 않으면 이전에 만든 함수를 재사용!(메모이제이션)
 
+//# 자식 컴포넌트
+const Button = ({ handleClick }: {handleClick: () => void}) => {
+  // useCallback 사용 시
+  // : 자식 컴포넌트 내부의 콘솔은 리렌더링
+  // - 부모로부터 전달 받는 함수의 인스턴스는 동일하게 유지
+  console.log('버튼이 렌더링 되었습니다.');
+  return <button onClick={handleClick}>자식 버튼</button>
+}
+
+
+//# 부모 컴포넌트
 function UseCallback() {
   const [count, setCount] = useState<number>(0);
+  const [text, setText] = useState<string>('');
 
-  const handleCountClick = () => {
-    setCount(prevCount => prevCount + 1)
-  }
+  const handleCountClick = useCallback(() => {
+    setCount(prevCount => prevCount + 1);
+  }, [count])
 
   return (
     <div>
       <h5>UseCallback</h5>
       <p>Count: {count}</p>
       <button onClick={handleCountClick}>부모 버튼</button>
+      <Button handleClick={handleCountClick} />
+
+      <br />
+
+      <input type="text" value={text} onChange={(e) => setText(e.target.value)} />
     </div>
   )
 }
