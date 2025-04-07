@@ -17,5 +17,8 @@
     "url": "https://github.com/bbang-2/korea_sleepTech_front/issues"
   },
   "homepage": "https://github.com/bbang-2/korea_sleepTech_front#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "axios": "^1.8.4"
+  }
 }
