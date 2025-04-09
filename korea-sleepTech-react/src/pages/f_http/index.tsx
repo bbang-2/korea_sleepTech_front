@@ -22,7 +22,7 @@ import React, { useEffect, useState } from 'react'
 // - Body: 보낼 데이터 (POST나 PUT등에서 사용)
 
 // 2) 응답(Respose)의 구성
-// : 서버가 클라이언트에게 돌려주는 정보\
+// : 서버가 클라이언트에게 돌려주는 정보
 // - Status Code: 결과 상태 (예: 200성공, 404 없음)
 // - Headers: 응답 정보 (예: 응답 형식)
 // - Body: 실제 데이터 (예: JSON, HTML 등)

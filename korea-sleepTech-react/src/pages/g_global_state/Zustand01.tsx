@@ -1,3 +1,4 @@
+import { useAuthStore } from '@/stores/auth.store';
 import React, { use } from 'react'
 import { create } from 'zustand';
 
@@ -72,8 +73,10 @@ function Component() {
 
 function Zustand01() {
   const {count} = useCountStore();
+  const {user} = useAuthStore();
   return (
     <div>
+      <p>User: (Zustand02): {user}</p>
       Count: {count}
       <Component />
     </div>
